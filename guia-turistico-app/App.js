@@ -12,6 +12,9 @@ import DetalhesPontoTuristico from './screens/DetalhesPontoTuristico';
 import FavoritosScreen from './screens/FavoritosScreen';
 import MapaScreen from './screens/MapaScreen';
 
+// NO App.js, ADICIONE ESTAS IMPORTACÕES:
+import { PontosTuristicosProvider } from './context/PontosTuristicosContext';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -72,5 +75,19 @@ export default function App() {
         </Tab.Navigator>
       </NavigationContainer>
     </FavoritesProvider>
+  );
+}
+
+
+// E MODIFIQUE O RETURN para incluir o novo Provider:
+export default function App() {
+  return (
+    <PontosTuristicosProvider> {/* <-- NOVO PROVIDER */}
+      <FavoritesProvider>
+        <NavigationContainer>
+          {/* ... resto do código igual ... */}
+        </NavigationContainer>
+      </FavoritesProvider>
+    </PontosTuristicosProvider>
   );
 }
